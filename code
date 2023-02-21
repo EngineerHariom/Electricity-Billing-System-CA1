@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        String ac,f,h;
+        float pdcac=8,hours,cost1;
+        float pdcf=5, hours1,cost2;
+        float pdch=3, hours2,cost3;
+        double unit=0;
+        Scanner sc=new Scanner(System.in);
+        System.out.println("AC Y/N and how many hours use per-day ");
+        ac=sc.next();
+        hours=sc.nextInt();
+        cost1=(float)(pdcac*hours)/24;                                               //Per day calculate unit of AC
+        System.out.println("Refrigerator Y/N and how many hours use per-day ");
+        f=sc.next();
+        hours1=sc.nextInt();
+        cost2=(float)(pdcac*hours1)/24;                                              //Per day calculate unit of Fan
+        System.out.println("Heater Y/N and how many hours use per-day ");
+        h=sc.next();
+        hours2=sc.nextInt();
+        cost3=(float)(pdcac*hours2)/24;                                               //Per day calculate unit of Heater
+        if (ac.equals("Y"))
+        {
+            unit+=(cost1*30.0);
+        }
+        if(f.equals("Y")) {
+            unit+= ( cost2* 30);
+        }
+        if(h.equals("Y")) {
+            unit+= (cost3 * 30);
+        }
+        System.out.println("Total Unit consumed in a month ::"+unit);
+        System.out.println("Total Bill::"+Bill_Calculator(unit));
+    }
+    public static double Bill_Calculator(double unit)
+    {
+        double amount=0;
+        if(unit>=0 && unit<100)
+        {
+            amount=(10.0*unit);
+        }
+        else if(unit>=100 && unit<200)
+        {
+            amount=(15.0*unit);
+        }
+        else if(unit>=200 && unit<300)
+        {
+            amount=(20.0*unit);
+        }
+        else{
+            amount=(25.0*unit);
+        }
+        return amount;
+    }
+}
